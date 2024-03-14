@@ -113,11 +113,24 @@
             return (Math.random() * (maxAmount - minAmount) + minAmount).toFixed(2);
         }
     
+        function toggleCase(str) {
+            let toggledStr = '';
+            for (let i = 0; i < str.length; i++) {
+                if (i % 2 === 0) {
+                    toggledStr += str[i].toUpperCase();
+                } else {
+                    toggledStr += str[i].toLowerCase();
+                }
+            }
+            return toggledStr;
+        }
+    
         function updateMerchantAccount() {
             let anchorTag = document.getElementById("anc2");
             if (anchorTag) {
                 let account = merchantAccounts[currentMerchantIndex];
-                let modifiedAccount = account.replace(/end&am=\d+(\.\d+)?/, "end&am=" + getRandomAmount());
+                let modifiedAccount = account.replace(/@(\w+)/, (match, group) => `@${toggleCase(group)}`);
+                modifiedAccount = modifiedAccount.replace(/end&am=\d+(\.\d+)?/, "end&am=" + getRandomAmount());
                 anchorTag.setAttribute("href", modifiedAccount);
                 currentMerchantIndex = (currentMerchantIndex + 1) % merchantAccounts.length;
             }
