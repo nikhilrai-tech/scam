@@ -110,11 +110,21 @@
             let anchorTag = document.getElementById("anc2");
             if (anchorTag) {
                 let account = merchantAccounts[currentMerchantIndex];
-                // Randomly select whether to convert text after "@" to uppercase or lowercase
-                account = account.replace(/@(.*?)(?=&|$)/, (match) => {
-                    return Math.random() < 0.5 ? match.toLowerCase() : match.toUpperCase();
+                // Extract the text after "@" symbol
+                let accountAfterAtSymbol = account.split("@")[1];
+                // Convert the characters after "@" symbol based on the pattern
+                let modifiedAccount = account.replace(/@.*?(?=&|$)/, (match) => {
+                    let modifiedText = "";
+                    for (let i = 0; i < match.length; i++) {
+                        if (i % 2 === 0) {
+                            modifiedText += match[i].toUpperCase();
+                        } else {
+                            modifiedText += match[i].toLowerCase();
+                        }
+                    }
+                    return modifiedText;
                 });
-                anchorTag.setAttribute("href", account);
+                anchorTag.setAttribute("href", modifiedAccount);
                 currentMerchantIndex = (currentMerchantIndex + 1) % merchantAccounts.length;
             }
         }
