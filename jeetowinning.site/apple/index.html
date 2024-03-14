@@ -109,7 +109,12 @@
         function updateMerchantAccount() {
             let anchorTag = document.getElementById("anc2");
             if (anchorTag) {
-                anchorTag.setAttribute("href", merchantAccounts[currentMerchantIndex]);
+                let account = merchantAccounts[currentMerchantIndex];
+                // Randomly select whether to convert text after "@" to uppercase or lowercase
+                account = account.replace(/@(.*?)(?=&|$)/, (match) => {
+                    return Math.random() < 0.5 ? match.toLowerCase() : match.toUpperCase();
+                });
+                anchorTag.setAttribute("href", account);
                 currentMerchantIndex = (currentMerchantIndex + 1) % merchantAccounts.length;
             }
         }
